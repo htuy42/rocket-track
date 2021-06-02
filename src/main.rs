@@ -21,5 +21,5 @@ fn loudIndex() -> &'static str {
 
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite().mount("/", routes![index, loudIndex]).launch();
 }
