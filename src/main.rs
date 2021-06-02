@@ -17,14 +17,20 @@ fn loud_index() -> &'static str {
 }
 
 /// Declare a handler.
-#[get("/rand/<max>")]
+#[get("/random_response/<max>")]
 fn random_response(max: u8) -> String {
     let random_number = rand::thread_rng().gen_range(1..max);
     return format!("Hello for the {}'th time", random_number);
 }
 
+/// Declare a handler.
+#[get("/random_no_max")]
+fn random_response_no_max() -> String {
+    let random_number = rand::thread_rng().gen_range(1..100);
+    return format!("Hello for the {}'th time", random_number);
+}
 
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![index, loud_index, random_response]).launch();
+    rocket::ignite().mount("/", routes![index, loud_index, random_response, random_response_no_max]).launch();
 }
