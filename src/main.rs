@@ -20,7 +20,7 @@ fn loud_index() -> &'static str {
 #[get("/rand/<max>")]
 fn random(max : u8) -> String {
     let random_number = rand::thread_rng().gen_range(1..max);
-    return format!("Hello for the {}'th time" + random_number);
+    return format!("Hello for the {}'th time", random_number);
 }
 
 
