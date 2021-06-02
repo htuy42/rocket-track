@@ -1,7 +1,7 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
 use rocket::{self, get, routes};
-// use rand::Rng;
+use rand::Rng;
 
 
 /// Declare a handler.
@@ -12,7 +12,7 @@ fn index() -> &'static str {
 
 /// Declare a handler.
 #[get("/yell")]
-fn loudIndex() -> &'static str {
+fn loud_index() -> &'static str {
     "HELLO, WORLD!"
 }
 
@@ -26,5 +26,5 @@ fn loudIndex() -> &'static str {
 
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![index, loudIndex]).launch();
+    rocket::ignite().mount("/", routes![index, loud_index]).launch();
 }
