@@ -1,7 +1,7 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
 use rocket::{self, get, routes};
-use rand::Rng;
+// use rand::Rng;
 
 
 /// Declare a handler.
