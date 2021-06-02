@@ -14,7 +14,7 @@ fn index() -> &'static str {
 
 /// Declare a handler.
 #[get("/yell")]
-fn index() -> &'static str {
+fn loudIndex() -> &'static str {
     "HELLO, WORLD!"
 }
 
