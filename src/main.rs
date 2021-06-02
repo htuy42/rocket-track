@@ -2,7 +2,7 @@
 
 use rocket::{self, get, routes};
 use rand::Rng;
-
+use std::cmp::Ordering;
 
 /// Declare a handler.
 #[get("/")]
@@ -33,6 +33,16 @@ fn random_response_no_max() -> String {
 #[get("/hello/<name>/<age>")]
 fn hello(name: String, age: u8) -> String {
     format!("Hello, {} year old named {}!", age, name)
+}
+
+#[get("/guess/max/guess")]
+fn hello(max: u8, guess: u8) -> String {
+    let random_number = rand::thread_rng().gen_range(1..max);
+    match random_number.cmp(guess) {
+        Ordering::Less => "Too small!",
+        Ordering::Greater => "Too big!",
+        Ordering::Equal => "You win!",
+    }
 }
 
 /// Start our server.
