@@ -12,6 +12,13 @@ fn index() -> &'static str {
     "Hello, world!"
 }
 
+/// Declare a handler.
+#[get("/yell")]
+fn index() -> &'static str {
+    "HELLO, WORLD!"
+}
+
+
 /// Start our server.
 fn main() {
     rocket::ignite().mount("/", routes![index]).launch();
