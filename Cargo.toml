@@ -1,9 +1,9 @@
 [package]
-name = "rust-buildpack-example-rocket"
+name = "rocket-track"
 version = "0.1.0"
-authors = ["Eric Kidd <git@randomhacks.net>"]
-edition = "2018"
+authors = ["Josh Pattiz <42jpattiz@gmail.com>"]
+edition = "2021"
 
 [dependencies]
-rocket = "0.4"
+rocket = "0.4.10"
 rand = "0.8.3"
