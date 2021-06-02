@@ -38,7 +38,7 @@ fn hello(name: String, age: u8) -> String {
 #[get("/guess/<max>/<guess>")]
 fn guess(max: u8, guess: u8) -> &'static str {
     let random_number = rand::thread_rng().gen_range(1..max);
-    match random_number.cmp(&guess) {
+    match &guess.cmp(&random_number) {
         Ordering::Less => "Too small!",
         Ordering::Greater => "Too big!",
         Ordering::Equal => "You win!",
