@@ -18,7 +18,7 @@ fn loud_index() -> &'static str {
 
 /// Declare a handler.
 #[get("/rand/<max>")]
-fn random(max : u8) -> String {
+fn random_response(max: u8) -> String {
     let random_number = rand::thread_rng().gen_range(1..max);
     return format!("Hello for the {}'th time", random_number);
 }
@@ -26,5 +26,5 @@ fn random(max : u8) -> String {
 
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![index, loud_index, random]).launch();
+    rocket::ignite().mount("/", routes![index, loud_index, random_response]).launch();
 }
