@@ -4,17 +4,17 @@ use rocket::{self, get, routes};
 use rand::Rng;
 
 
-/// Declare a handler.
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
-}
+// /// Declare a handler.
+// #[get("/")]
+// fn index() -> &'static str {
+//     "Hello, world!"
+// }
 
-/// Declare a handler.
-#[get("/yell")]
-fn loud_index() -> &'static str {
-    "HELLO, WORLD!"
-}
+// /// Declare a handler.
+// #[get("/yell")]
+// fn loud_index() -> &'static str {
+//     "HELLO, WORLD!"
+// }
 
 /// Declare a handler.
 #[get("/random_response/<max>")]
@@ -37,5 +37,5 @@ fn hello(name: String, age: u8) -> String {
 
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![index, loud_index, random_response, random_response_no_max, hello]).launch();
+    rocket::ignite().mount("/", routes![random_response, random_response_no_max, hello]).launch();
 }
