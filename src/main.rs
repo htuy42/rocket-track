@@ -18,9 +18,9 @@ fn loudIndex() -> &'static str {
 
 /// Declare a handler.
 #[get("/rand/<max>")]
-fn rand(max : i64) -> String {
+fn rand(max : u8) -> String {
     let random_number = rand::thread_rng().gen_range(1..max);
-    format!("Hello for the {}'th time" + random_number);
+    return format!("Hello for the {}'th time" + random_number);
 }
 
 
