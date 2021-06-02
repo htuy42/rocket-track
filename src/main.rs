@@ -30,7 +30,12 @@ fn random_response_no_max() -> String {
     return format!("Hello for the {}'th time", random_number);
 }
 
+#[get("/hello/<name>/<age>")]
+fn hello(name: String, age: u8) -> String {
+    format!("Hello, {} year old named {}!", age, name)
+}
+
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![index, loud_index, random_response, random_response_no_max]).launch();
+    rocket::ignite().mount("/", routes![index, loud_index, random_response, random_response_no_max, hello]).launch();
 }
