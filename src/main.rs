@@ -1,8 +1,17 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
+
 use rocket::{self, get, routes};
+use rocket::State;
 use rand::Rng;
 use std::cmp::Ordering;
+use std::sync::Mutex;
+
+#[get("/less/<amount>")]
+fn decrease(current: State<Mutex<i32>>, amount: i32) -> String {
+    *current.lock().unwrap() -= amount;
+    format!("Count is now {}, down by {}", current.lock().unwrap(), amount)
+}
 
 /// Declare a handler.
 #[get("/")]
@@ -47,5 +56,8 @@ fn guess(max: u8, guess: u8) -> &'static str {
 
 /// Start our server.
 fn main() {
-    rocket::ignite().mount("/", routes![random_response, random_response_no_max, hello, guess]).launch();
+    rocket::ignite()
+        .mount("/", routes![loud_index, random_response, random_response_no_max, hello, guess, decrease])
+        .manage(Mutex::new(5))
+        .launch();
 }
